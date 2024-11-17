@@ -10,7 +10,23 @@
 //   colored video size (based on the unit passed parametter)
 float video(int w, int h, int durationMovie, int durationCredits, int fps, char* unit) {
    // YOUR CODE HERE - BEGIN
+   int colorImgSizeBytes = w * h * 3.0; 
+   int bwImgSizeBytes = w * h*1.0;        
 
+   float totalSizeBytes = ((float)colorImgSizeBytes * durationMovie + (float)bwImgSizeBytes * durationCredits) * fps;
+
+   if (strcmp(unit, "ko") == 0) {  
+      return totalSizeBytes / 1024.0;
+   }
+   else if (strcmp(unit, "bt") == 0) {  
+      return totalSizeBytes;
+   }
+   else if (strcmp(unit, "mo") == 0) {  
+      return totalSizeBytes / (1024.0 * 1024.0);
+   }
+   else if (strcmp(unit, "go") == 0) {  
+      return totalSizeBytes / (1024.0 * 1024.0 * 1024.0);
+   }
    // YOUR CODE HERE - END
    return 0;
 }
